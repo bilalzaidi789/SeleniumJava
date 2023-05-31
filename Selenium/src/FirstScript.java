@@ -48,7 +48,7 @@ public class FirstScript {
        System.out.println(driver.getCurrentUrl());
        System.out.println("Test has been passed");
        
-       Thread.sleep(10000);
+       Thread.sleep(5000);
 
        
        driver.close();
