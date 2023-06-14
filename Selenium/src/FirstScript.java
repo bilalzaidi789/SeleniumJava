@@ -26,7 +26,7 @@ public class FirstScript {
     
 
 
-    driver.findElement(By.className("close-icon")).click();
+   // driver.findElement(By.className("close-icon")).click();
     
     driver.manage().window().maximize();
 
@@ -41,6 +41,16 @@ public class FirstScript {
     
     Thread.sleep(10000);
 
+    
+    // Go to the HomePage 
+    
+    driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[1]/a/img")).click();
+    
+    Thread.sleep(5000);
+
+    // Selecting a drop down to create a dummy CoCart
+    
+    
     
     //getting the title 
     
