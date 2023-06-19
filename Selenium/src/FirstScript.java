@@ -17,6 +17,9 @@ public class FirstScript {
 		System.setProperty("webdriver.chrome.driver","/Users/macair/Downloads/chromedriver_mac64/chromedriver");
 
 		
+		
+		
+		
         WebDriver driver = new ChromeDriver();
         
         //Opening google url
@@ -42,20 +45,23 @@ public class FirstScript {
     driver.findElement(By.xpath("//*[@id=\"panel:r0:0\"]/div/form/div[4]/button")).click();
     
     Thread.sleep(10000);
+    
+// rejecting the notification alert
+    
+    driver.findElement(By.xpath("//*[@id=\"onesignal-slidedown-cancel-button\"]")).click();
+    
+    
 
     
     // Go to the HomePage 
     
-    driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[1]/a/img")).click();
+    driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[1]/a")).click();
     
-    Thread.sleep(5000);
+    Thread.sleep(10000);
 
-    // Selecting a drop down to create a dummy CoCart
+    // Go  to create a dummy CoCart
     
-    WebElement dropdownElement = driver.findElement(By.id("dropdownMenuButton"));
-	Select dropdown = new Select(dropdownElement);
-    dropdown.selectByVisibleText("Create a CoCart");
-
+    driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[1]/div[1]/div[2]/a[1]/span[1]/img")).click();
     
     //getting the title 
     
