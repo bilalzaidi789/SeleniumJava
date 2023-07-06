@@ -54,22 +54,21 @@ public class FirstScript {
     
 // rejecting the notification alert
     
-    driver1.findElement(By.xpath("//*[@id=\"onesignal-slidedown-cancel-button\"]")).click();
+    driver1.findElement(By.id("onesignal-slidedown-cancel-button")).click();
     
     
 
     
     // Go to the HomePage 
     
-   // driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[1]/a")).click();
     
-    Thread.sleep(10000);
+    Thread.sleep(5000);
 
     // Go  to create a dummy CoCart
-    driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/main/div[4]/div/div[1]/div/div[1]/div/div[1]")).click();
+    driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/main/div[4]/div/div[1]/div/div[1]/div/div[2]/h3/a")).click();
   
     
-    driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[1]/div[1]/div[2]/a[1]/span[1]/img")).click();
+   // driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[1]/div[1]/div[2]/a[1]/span[1]/img")).click();
     
     
     driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[4]/div/div/form/div[1]/div/input")).sendKeys("AUtomated CoCart");
@@ -85,6 +84,13 @@ public class FirstScript {
     driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[4]/div/div/form/div[9]/div/button")).click();
     
   
+    
+    // Go to HomePage
+    
+    
+     driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[1]/a/img")).click();
+
+    
     
     //getting the title 
     
