@@ -50,7 +50,7 @@ public class FirstScript {
     
     driver1.findElement(By.xpath("//*[@id=\"panel:r0:0\"]/div/form/div[4]/button")).click();
     
-    Thread.sleep(10000);
+    Thread.sleep(12500);
     
 // rejecting the notification alert
     
@@ -59,7 +59,6 @@ public class FirstScript {
     
 
     
-    // Go to the HomePage 
     
     
     Thread.sleep(5000);
@@ -84,11 +83,12 @@ public class FirstScript {
     driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[4]/div/div/form/div[9]/div/button")).click();
     
   
-    
+     Thread.sleep(10000);
+
     // Go to HomePage
+     driver1.get("https://www.coowncart.com/");
     
-    
-     driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[1]/a/img")).click();
+     driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[1]")).click();
 
     
     
