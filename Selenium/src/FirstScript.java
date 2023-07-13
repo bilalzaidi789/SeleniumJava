@@ -91,14 +91,26 @@ public class FirstScript {
      driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[1]")).click();
 
     
+     // Search a product walmart
+     
+   
+     driver1.findElement(By.xpath("//*[@id=\"header-search-bar\"]")).sendKeys("Shoes");
+     driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[2]/div/form/div/div[2]/button")).click();
     
+      Thread.sleep(10000);
+
+      // Add a product into CoCart
+      
+      driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/main/div[4]/div/div/div/div[1]/div/div[1]/div")).click();
+      
+      
+     
     //getting the title 
     
        System.out.println(driver1.getTitle()) ;
        System.out.println(driver1.getCurrentUrl());
        System.out.println("Test has been passed");
        
-      // Thread.sleep(5000);
 
        
        driver1.close();
