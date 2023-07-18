@@ -90,7 +90,8 @@ public class FirstScript {
     
      driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[1]")).click();
 
-    
+     Thread.sleep(5000);
+
      // Search a product walmart
      
    
@@ -99,9 +100,9 @@ public class FirstScript {
     
       Thread.sleep(10000);
 
-      // Add a product into CoCart
+      // Go to Blog page
       
-      driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/main/div[4]/div/div/div/div[1]/div/div[1]/div")).click();
+      driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[3]/footer/div[1]/div/div[2]/div[2]/div/ul/li[4]/a")).click();
       
       
      
