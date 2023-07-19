@@ -28,7 +28,7 @@ public class FirstScript {
 
 
 		
-        WebDriver driver1 = new ChromeDriver(options);
+        WebDriver driver1 = new ChromeDriver();
         
         //Opening google url
         
@@ -116,7 +116,13 @@ public class FirstScript {
       
       Thread.sleep(10000);
 
-     
+      
+      driver1.get("https://www.coowncart.com/");
+      
+      driver1.findElement(By.className("text-primary")).click();
+      
+      Thread.sleep(10000);
+
     //getting the title 
     
        System.out.println(driver1.getTitle()) ;
