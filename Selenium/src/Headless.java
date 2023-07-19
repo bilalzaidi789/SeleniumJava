@@ -1,83 +1,107 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Headless {
 
     public static void main(String[] args) throws InterruptedException {
-
         // Setting up ChromeOptions for headless browsing
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--disable-gpu");
 
-        // browser invoking
+        // Browser invoking
         System.setProperty("webdriver.chrome.driver", "/Users/macair/Downloads/chromedriver_mac64/chromedriver");
 
-        while (true) {
-            WebDriver driver1 = new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
 
-            // Opening Google URL
-            driver1.get("https://www.coowncart.com/");
+        // Opening google url
+        driver.get("https://www.coowncart.com/");
 
-            Thread.sleep(6000);
+        Thread.sleep(6000);
 
-            // driver1.findElement(By.className("close-icon")).click();
+        // Close the initial pop-up
+        WebElement closeButton = driver.findElement(By.className("close-icon"));
+        closeButton.click();
 
-            driver1.manage().window().maximize();
+        driver.manage().window().maximize();
 
-            driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[3]/div[2]/a/div")).click();
-            Thread.sleep(5000);
+        WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[3]/div[2]/a/div"));
 
-            driver1.findElement(By.xpath("//*[@id=\"panel:r0:0\"]/div/form/div[1]/div/input"))
-                    .sendKeys("syed@cocarting.com");
-            driver1.findElement(By.xpath("//*[@id=\"panel:r0:0\"]/div/form/div[2]/div/input")).sendKeys("123456A");
+        // Explicit wait for login button to be clickable
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(loginButton));
 
-            driver1.findElement(By.xpath("//*[@id=\"panel:r0:0\"]/div/form/div[4]/button")).click();
+        loginButton.click();
 
-            Thread.sleep(12500);
+        WebElement emailInput = driver.findElement(By.xpath("//*[@id=\"panel:r0:0\"]/div/form/div[1]/div/input"));
+        WebElement passwordInput = driver.findElement(By.xpath("//*[@id=\"panel:r0:0\"]/div/form/div[2]/div/input"));
+        WebElement loginSubmitButton = driver.findElement(By.xpath("//*[@id=\"panel:r0:0\"]/div/form/div[4]/button"));
 
-            // rejecting the notification alert
-            driver1.findElement(By.id("onesignal-slidedown-cancel-button")).click();
+        emailInput.sendKeys("syed@cocarting.com");
+        passwordInput.sendKeys("123456A");
+        loginSubmitButton.click();
 
-            Thread.sleep(5000);
+        Thread.sleep(12500);
 
-            // Go to create a dummy CoCart
-            driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/main/div[4]/div/div[1]/div/div[1]/div/div[2]/h3/a"))
-                    .click();
+        // Reject the notification alert
+        WebElement notificationCancelButton = driver.findElement(By.id("onesignal-slidedown-cancel-button"));
+        notificationCancelButton.click();
 
-            // driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[1]/div[1]/div[2]/a[1]/span[1]/img")).click();
+        // Go to create a dummy CoCart
+        WebElement createCoCartButton = driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/main/div[4]/div/div[1]/div/div[1]/div/div[2]/h3/a"));
+        createCoCartButton.click();
 
-            driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[4]/div/div/form/div[1]/div/input"))
-                    .sendKeys("AUtomated CoCart");
+        WebElement cartNameInput = driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[4]/div/div/form/div[1]/div/input"));
+        WebElement cartTypeSelect = driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[4]/div/div/form/div[2]/div/select"));
+        WebElement cartDescriptionTextArea = driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[4]/div/div/form/div[3]/div/textarea"));
+        WebElement cartEmailInput = driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[4]/div/div/form/div[4]/div/span/input"));
+        WebElement createCartButton = driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[4]/div/div/form/div[9]/div/button"));
 
-            driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[4]/div/div/form/div[2]/div/select"))
-                    .sendKeys("Private");
+        cartNameInput.sendKeys("Automated CoCart");
+        cartTypeSelect.sendKeys("Private");
+        cartDescriptionTextArea.sendKeys("This CoCart is created by automated scripts");
+        cartEmailInput.sendKeys("syed@cocarting.com");
+        createCartButton.click();
 
-            driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[4]/div/div/form/div[3]/div/textarea"))
-                    .sendKeys("This CoCart is created by automated scripts");
+        Thread.sleep(10000);
 
-            driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[4]/div/div/form/div[4]/div/span/input"))
-                    .sendKeys("syed@cocarting.com");
+        // Go to HomePage
+        driver.get("https://www.coowncart.com/");
 
-            driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[4]/div/div/form/div[9]/div/button")).click();
+        WebElement menuButton = driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[1]"));
+        menuButton.click();
 
-            Thread.sleep(10000);
+        Thread.sleep(5000);
 
-            // Go to HomePage
-            driver1.get("https://www.coowncart.com/");
+        // Search for a product (e.g., "Shoes")
+        WebElement searchInput = driver.findElement(By.xpath("//*[@id=\"header-search-bar\"]"));
+        searchInput.sendKeys("Shoes");
 
-            driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[1]")).click();
+        WebElement searchButton = driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/header/div/div[2]/div/div[2]/div/form/div/div[2]/button"));
+        searchButton.click();
 
-            // getting the title
-            System.out.println(driver1.getTitle());
-            System.out.println(driver1.getCurrentUrl());
-            System.out.println("Test has been passed");
+        Thread.sleep(10000);
 
-            // Thread.sleep(5000);
+        // Go to Blog page
+        WebElement blogLink = driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[3]/footer/div[1]/div/div[2]/div[2]/div/ul/li[4]/a"));
+        blogLink.click();
+        System.out.println("Blog page working");
 
-            driver1.close();
-        }
+        WebElement blogImage = driver.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[1]/div[4]/div/div[1]/div[1]/div[1]/a/img"));
+        blogImage.click();
+
+        Thread.sleep(5000);
+
+        // Getting the title and current URL
+        System.out.println(driver.getTitle());
+        System.out.println(driver.getCurrentUrl());
+        System.out.println("Test has been passed");
+
+        driver.close();
     }
 }

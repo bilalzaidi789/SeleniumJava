@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class FirstScript {
 
@@ -23,10 +25,10 @@ public class FirstScript {
 		
 		System.setProperty("webdriver.chrome.driver","/Users/macair/Downloads/chromedriver_mac64/chromedriver");
 
-		
+
 
 		
-        WebDriver driver1 = new ChromeDriver();
+        WebDriver driver1 = new ChromeDriver(options);
         
         //Opening google url
         
@@ -68,7 +70,8 @@ public class FirstScript {
   
     
    // driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[1]/div[1]/div[2]/a[1]/span[1]/img")).click();
-    
+    Thread.sleep(5000);
+
     
     driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[2]/div[4]/div/div/form/div[1]/div/input")).sendKeys("AUtomated CoCart");
 
@@ -103,8 +106,16 @@ public class FirstScript {
       // Go to Blog page
       
       driver1.findElement(By.xpath("//*[@id=\"page_wrapper\"]/div[3]/footer/div[1]/div/div[2]/div[2]/div/ul/li[4]/a")).click();
+      System.out.println("Blog page working");
+
+      Thread.sleep(10000);
+
       
       
+      driver1.findElement(By.className("blog-title")).click();
+      
+      Thread.sleep(10000);
+
      
     //getting the title 
     
